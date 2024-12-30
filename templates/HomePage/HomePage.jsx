@@ -1,7 +1,14 @@
 import { useState } from 'react';
 
 import { Search } from '@mui/icons-material';
-import { Box, Grid, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Grid,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from '@mui/material';
 import Image from 'next/image';
 
 import TabButton from '@/components/TabButton';
@@ -14,13 +21,30 @@ import styles from './styles';
 import disableFilters from '@/libs/constants/disableFilters';
 import { ToolsListingContainer } from '@/tools';
 
-const TABS = ['All', 'Questions', 'Planning', 'Feedback'];
+const TABS = [
+  'All',
+  'New',
+  'Planning',
+  'Assessments',
+  'Assignments',
+  'Writing',
+  'Study',
+];
+
+const SORT_TYPES = [
+  'Most Popular',
+  'Recently Added',
+  'Recommended',
+  'A-Z',
+  'Z-A',
+];
 
 const HomePage = (props) => {
   const { data: unsortedData, loading } = props;
   const data = [...(unsortedData || [])].sort((a, b) => a.id - b.id);
 
   const [currentTab, setCurrentTab] = useState(TABS[0]);
+  const [sortType, setSortType] = useState(null);
 
   const renderWelcomeBanner = () => {
     return (
@@ -64,7 +88,10 @@ const HomePage = (props) => {
 
   const renderFilters = () => {
     return (
-      <Grid {...styles.filtersProps}>
+      <>
+        <Grid {...styles.filtersProps}>
+          <TextField {...styles.inputProps(<Search />)} />
+        </Grid>
         <Grid {...styles.tabsGrid}>
           {TABS.map((tab) => (
             <TabButton
@@ -75,9 +102,7 @@ const HomePage = (props) => {
             />
           ))}
         </Grid>
-
-        <TextField {...styles.inputProps(<Search />)} />
-      </Grid>
+      </>
     );
   };
 

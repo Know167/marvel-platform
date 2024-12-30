@@ -77,7 +77,7 @@ const styles = {
     gap: '10px',
   },
   inputProps: (icon) => ({
-    placeholder: 'Search Catalog',
+    placeholder: 'Search for a tool',
     textTransform: 'none',
     size: 'small',
     InputProps: {
@@ -86,7 +86,7 @@ const styles = {
     sx: {
       width: '254px',
       '.MuiInputBase-root': {
-        border: '1.63px solid #65417D',
+        border: '1.63px solid #9D74FF',
         borderRadius: '20px',
         background: 'transparent',
         color: '#BDBDBD',
