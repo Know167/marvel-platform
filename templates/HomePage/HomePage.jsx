@@ -96,7 +96,7 @@ const HomePage = ({ data: unsortedData, loading }) => {
       {renderWelcomeBanner()}
       {renderFilters()}
       <ToolsListingContainer
-        data={filteredData}
+        data={sortedData}
         loading={loading}
         category="Marvel Tools"
       />

@@ -3,6 +3,7 @@ import React from 'react';
 
 import { Search } from '@mui/icons-material';
 import { Grid, InputAdornment, TextField } from '@mui/material';
+import { purple } from '@mui/material/colors';
 
 const SearchBar = ({ onSearch }) => {
   const handleSearch = (event) => {
@@ -14,7 +15,6 @@ const SearchBar = ({ onSearch }) => {
       <TextField
         placeholder="Search for a tool"
         variant="outlined"
-        Width="20%"
         onChange={handleSearch}
         InputProps={{
           startAdornment: (
