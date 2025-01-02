@@ -3,7 +3,6 @@ import React from 'react';
 
 import { Search } from '@mui/icons-material';
 import { Grid, InputAdornment, TextField } from '@mui/material';
-import { purple } from '@mui/material/colors';
 
 const SearchBar = ({ onSearch }) => {
   const handleSearch = (event) => {
@@ -27,6 +26,15 @@ const SearchBar = ({ onSearch }) => {
           '& .MuiOutlinedInput-root': {
             borderRadius: '24px',
             boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+            '& fieldset': {
+              borderColor: '#9d74ff', // Same color as the filter buttons
+            },
+            '&:hover fieldset': {
+              borderColor: '#9d74ff', // Same color as the filter buttons on hover
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: '#9d74ff', // Same color as the filter buttons when focused
+            },
           },
         }}
       />

@@ -72,21 +72,27 @@ const HomePage = ({ data: unsortedData, loading }) => {
 
   // Filters and Search
   const renderFilters = () => (
-    <Grid container alignItems="center" spacing={2}>
-      <Grid item>
-        <SearchBar onSearch={setSearchQuery} />
+    <Grid container direction="column" spacing={2}>
+      <Grid
+        item
+        container
+        alignItems="center"
+        spacing={2}
+        justifyContent="space-between"
+      >
+        <Grid item>
+          <SearchBar onSearch={setSearchQuery} />
+        </Grid>
+        <Grid item>
+          <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
+        </Grid>
       </Grid>
-      <Grid item xs />
       <Grid item>
         <Filters
           tabs={TABS}
           activeTab={currentTab}
           setActiveTab={setCurrentTab}
         />
-      </Grid>
-      <Grid item xs />
-      <Grid item justifyContent="flex-end">
-        <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
       </Grid>
     </Grid>
   );
