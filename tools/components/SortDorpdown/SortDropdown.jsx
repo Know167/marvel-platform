@@ -1,7 +1,3 @@
-// tools/components/SortDropdown/SortDropdown.jsx
-import React from 'react';
-
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 const SortDropdown = ({ sortOption, setSortOption }) => {
@@ -12,11 +8,11 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
   return (
     <FormControl
       variant="outlined"
-      IconComponent={ArrowDropDownIcon}
       sx={{
         minWidth: 120,
         borderRadius: '16px',
         '& .MuiOutlinedInput-root': {
+          borderRadius: '16px',
           '& fieldset': {
             borderColor: '#9d74ff', // Same color as the filter buttons
           },
@@ -35,8 +31,9 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
         value={sortOption}
         onChange={handleChange}
         label="Sort By"
-        IconComponent={ArrowDropDownIcon}
-        sx={{ borderRadius: '16px' }}
+        sx={{
+          borderRadius: '16px',
+        }}
       >
         <MenuItem value="Most Popular">Most Popular</MenuItem>
         <MenuItem value="Recently Added">Recently Added</MenuItem>

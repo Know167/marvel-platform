@@ -1,6 +1,3 @@
-// tools/components/SearchBar/Filters.jsx
-import React from 'react';
-
 import { Box, Grid } from '@mui/material';
 
 const Filters = ({ tabs, activeTab, setActiveTab }) => {

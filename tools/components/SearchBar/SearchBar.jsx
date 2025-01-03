@@ -1,6 +1,3 @@
-// tools/components/SearchBar/SearchBar.js
-import React from 'react';
-
 import { Search } from '@mui/icons-material';
 import { Grid, InputAdornment, TextField } from '@mui/material';
 
