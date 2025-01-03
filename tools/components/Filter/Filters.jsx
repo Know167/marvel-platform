@@ -1,5 +1,6 @@
 import { Box, Grid } from '@mui/material';
 
+// tabs is an array of strings, activeTab is a string, setActiveTab is a function they are listing on the homepage
 const Filters = ({ tabs, activeTab, setActiveTab }) => {
   return (
     <Grid container spacing={2} sx={{ padding: '16px 0' }} wrap="nowrap">

@@ -1,5 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-
+/* 
+Made this to sort items in the tools page
+*/
 const SortDropdown = ({ sortOption, setSortOption }) => {
   const handleChange = (event) => {
     setSortOption(event.target.value);
@@ -14,19 +16,19 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
         '& .MuiOutlinedInput-root': {
           borderRadius: '16px',
           '& fieldset': {
-            borderColor: '#9d74ff', // Same color as the filter buttons
+            borderColor: '#9d74ff',
           },
           '&:hover fieldset': {
-            borderColor: '#9d74ff', // Same color as the filter buttons on hover
+            borderColor: '#9d74ff',
           },
           '&.Mui-focused fieldset': {
-            borderColor: '#9d74ff', // Same color as the filter buttons when focused
+            borderColor: '#9d74ff',
           },
         },
       }}
     >
       <InputLabel id="sort-label">Sort By</InputLabel>
-      <Select
+      <Select // select what you want to sort by
         labelId="sort-label"
         value={sortOption}
         onChange={handleChange}
@@ -35,6 +37,7 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
           borderRadius: '16px',
         }}
       >
+        {/* can add or remove slections here */}
         <MenuItem value="Most Popular">Most Popular</MenuItem>
         <MenuItem value="Recently Added">Recently Added</MenuItem>
         <MenuItem value="Recommended">Recommended</MenuItem>
