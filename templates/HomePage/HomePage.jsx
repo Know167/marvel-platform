@@ -28,6 +28,15 @@ const HomePage = ({ data: unsortedData, loading }) => {
   const [currentTab, setCurrentTab] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortOption, setSortOption] = useState('Most Popular');
+  const [favorites, setFavorites] = useState([]); // State to track favorite tool IDs
+
+  const handleToggleFavorite = (id) => {
+    setFavorites((prevFavorites) =>
+      prevFavorites.includes(id)
+        ? prevFavorites.filter((favId) => favId !== id) // Remove if already in favorites
+        : [...prevFavorites, id] // Add if not in favorites
+    );
+  };
 
   const data = [...(unsortedData || [])].sort((a, b) => a.id - b.id);
 
@@ -48,6 +57,10 @@ const HomePage = ({ data: unsortedData, loading }) => {
       return new Date(b.date) - new Date(a.date);
     return 0;
   });
+
+  const favoriteTools = sortedData.filter((tool) =>
+    favorites.includes(tool.id)
+  );
 
   // Welcome Banner
   const renderWelcomeBanner = () => (
@@ -101,17 +114,17 @@ const HomePage = ({ data: unsortedData, loading }) => {
     <Grid {...styles.mainGridProps}>
       {renderWelcomeBanner()}
       {renderFilters()}
-      {/* This is the Favorites component */}
       <Favorites
-        data={sortedData}
-        loading={loading}
-        category="Favorites"
+        favoriteTools={favoriteTools}
+        handleToggleFavorite={handleToggleFavorite}
+        favorites={favorites}
       />
-      {/* This is the ReccomendedForYou component */}
       <ReccomendedForYou data={sortedData} loading={loading} />
       <ToolsListingContainer
         data={sortedData}
         loading={loading}
+        favorites={favorites}
+        handleToggleFavorite={handleToggleFavorite}
         category="Marvel Tools"
       />
     </Grid>

@@ -26,7 +26,7 @@ const Favorites = ({ favoriteTools = [], handleToggleFavorite, favorites }) => {
                 sx={{ position: 'absolute', bottom: 16, right: 16 }}
               >
                 {favorites.includes(tool.id) ? (
-                  <Star sx={{ color: '#FFD700' }} />
+                  <Star sx={{ color: '#9d74ff' }} />
                 ) : (
                   <StarBorder />
                 )}

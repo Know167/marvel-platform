@@ -12,23 +12,28 @@ const DEFAULT_TOOLS = new Array(8)
 /**
  * Renders the Tools Listings component.
  *
- * @param {object} props - The props object containing data and the category.
+ * @param {object} props - The props object containing data, category, favorites, and toggle function.
  * @param {object} props.data - The data to be rendered.
- * @param {object} props.category - The category of the tools.
+ * @param {object} props.favorites - The list of favorite tool IDs.
+ * @param {function} props.handleToggleFavorite - Function to toggle a tool as favorite.
+ * @param {string} props.category - The category of the tools.
+ * @param {boolean} props.loading - Whether the data is still loading.
  * @return {JSX.Element} The rendered Tools Listings component.
  */
-const ToolsListingContainer = (props) => {
-  const { data, loading, category } = props;
-
-  const renderTitle = () => {
-    return (
-      <Grid {...styles.headerGridProps}>
-        <Typography {...styles.categoryTitleProps}>
-          {category} {data && `(${data?.length})`}
-        </Typography>
-      </Grid>
-    );
-  };
+const ToolsListingContainer = ({
+  data,
+  loading,
+  category,
+  favorites,
+  handleToggleFavorite,
+}) => {
+  const renderTitle = () => (
+    <Grid {...styles.headerGridProps}>
+      <Typography {...styles.categoryTitleProps}>
+        {category} {data && `(${data?.length})`}
+      </Typography>
+    </Grid>
+  );
 
   const renderCards = () => {
     const sortedTools = [...(data || [])].sort((a, b) => {
@@ -44,24 +49,27 @@ const ToolsListingContainer = (props) => {
       <Grid {...styles.containerGridProps}>
         <Grid {...styles.innerListGridProps}>
           {sortedTools?.map((tool) => (
-            <ToolCard key={tool.id} {...tool} />
+            <ToolCard
+              key={tool.id}
+              {...tool}
+              favorites={favorites}
+              handleToggleFavorite={handleToggleFavorite}
+            />
           ))}
         </Grid>
       </Grid>
     );
   };
 
-  const renderLoader = () => {
-    return (
-      <Grid {...styles.containerGridProps}>
-        <Grid {...styles.innerListGridProps}>
-          {DEFAULT_TOOLS?.map((tool) => (
-            <ToolCardSkeleton key={tool.id} />
-          ))}
-        </Grid>
+  const renderLoader = () => (
+    <Grid {...styles.containerGridProps}>
+      <Grid {...styles.innerListGridProps}>
+        {DEFAULT_TOOLS?.map((tool) => (
+          <ToolCardSkeleton key={tool.id} />
+        ))}
       </Grid>
-    );
-  };
+    </Grid>
+  );
 
   return (
     <Grid {...styles.mainGridProps}>
