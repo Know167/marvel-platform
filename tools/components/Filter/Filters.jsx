@@ -17,7 +17,7 @@ const Filters = ({ tabs, activeTab, setActiveTab }) => {
               color: activeTab === tab ? '#fff' : 'text.primary',
               padding: '8px 16px',
               borderRadius: '16px',
-              border: '2px solid  #9d74ff',
+              border: '2px solid #9d74ff',
               cursor: 'pointer',
               transition: 'background-color 0.3s ease, border-color 0.3s ease',
               '&:hover': {

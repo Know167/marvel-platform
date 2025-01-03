@@ -10,9 +10,11 @@ import ImageURLs from '@/assets/urls';
 import styles from './styles';
 
 import { ToolsListingContainer } from '@/tools';
+import Favorites from '@/tools/views/Favorites/Favorites';
 import Filters from '@/tools/components/Filter/Filters';
 import SearchBar from '@/tools/components/SearchBar/SearchBar';
 import SortDropdown from '@/tools/components/SortDorpdown/SortDropdown';
+import ReccomendedForYou from '@/tools/views/ReccomendedForYou/ReccomendedForYou';
 
 const TABS = [
   'All',
@@ -101,6 +103,8 @@ const HomePage = ({ data: unsortedData, loading }) => {
     <Grid {...styles.mainGridProps}>
       {renderWelcomeBanner()}
       {renderFilters()}
+      <Favorites data={sortedData} loading={loading} category="Favorites" />
+      <ReccomendedForYou data={sortedData} loading={loading} />
       <ToolsListingContainer
         data={sortedData}
         loading={loading}
