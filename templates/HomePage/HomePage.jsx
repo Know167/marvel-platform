@@ -101,8 +101,14 @@ const HomePage = ({ data: unsortedData, loading }) => {
     <Grid {...styles.mainGridProps}>
       {renderWelcomeBanner()}
       {renderFilters()}
-      <Favorites data={sortedData} loading={loading} category="Favorites" /> {/* This is the Favorites component */}
-      <ReccomendedForYou data={sortedData} loading={loading} /> {/* This is the ReccomendedForYou component */}
+      {/* This is the Favorites component */}
+      <Favorites
+        data={sortedData}
+        loading={loading}
+        category="Favorites"
+      />
+      {/* This is the ReccomendedForYou component */}
+      <ReccomendedForYou data={sortedData} loading={loading} />
       <ToolsListingContainer
         data={sortedData}
         loading={loading}

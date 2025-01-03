@@ -49,9 +49,20 @@ const Favorites = ({ favoriteTools = [], handleToggleFavorite, favorites }) => {
 };
 
 Favorites.propTypes = {
-  favoriteTools: PropTypes.array,
+  favoriteTools: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      // Add other properties of the tool object here
+    })
+  ),
   handleToggleFavorite: PropTypes.func.isRequired,
-  favorites: PropTypes.array.isRequired,
+  favorites: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  ).isRequired,
+};
+
+Favorites.defaultProps = {
+  favoriteTools: [],
 };
 
 export default Favorites;

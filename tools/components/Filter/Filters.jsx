@@ -10,8 +10,7 @@ const Filters = ({ tabs, activeTab, setActiveTab }) => {
             component="button"
             sx={{
               width: '100%',
-              backgroundColor:
-                activeTab === tab ? 'primary.main' : 'transparent',
+              backgroundColor: activeTab === tab ? '#9d74ff' : 'transparent',
               color: activeTab === tab ? '#fff' : 'text.primary',
               padding: '8px 16px',
               borderRadius: '16px',
